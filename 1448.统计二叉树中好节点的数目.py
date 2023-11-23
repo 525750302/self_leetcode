@@ -17,6 +17,17 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        return self.dfs(root,root.val)
+
+    def dfs(self,root,max_val):
+        if not root:
+            return 0
+        if root.val >= max_val:
+            max_val = root.val
+            return 1 + self.dfs(root.left,max_val) + self.dfs(root.right,max_val)
+        else:
+            return self.dfs(root.left,max_val) + self.dfs(root.right,max_val)
+
         
 # @lc code=end
 
